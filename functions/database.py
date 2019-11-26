@@ -1,19 +1,7 @@
-#Function to get connection to database
-from pymongo import MongoClient
-from location import getLocation
 import pandas as pd
 from bson import ObjectId
-
-def insertSchoolToMongo(db,dic):
-    prop=dic['properties']
-    db['schools'].insert_one({
-        'type':'Feature',
-        'campus_address':prop['campus_address'],
-        'campus_name':prop['campus_name'],
-        'grade_range':prop['grade_range'],
-        'category':prop['category'],
-        'location':dic['geometry']
-    })
+from pymongo import MongoClient
+from functions.location import getLocation
 
 def createOfficeDoc(company,office):
     office.update({'company':company['_id']})

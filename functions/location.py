@@ -1,11 +1,11 @@
-from dotenv import load_dotenv
-from functions import authorizationKey
 import json
 import requests
+from dotenv import load_dotenv
+from functions.queries import authorizationKey
 
 def getLocation(office):
     if office['latitude'] and office['longitude']:
-        coordinates = [float(office['latitude']), float(office['longitude'])]
+        coordinates = [float(office['longitude']), float(office['latitude'])]
     else:
         coordinates = [0,0]
     return {"type":"Point","coordinates":coordinates}
